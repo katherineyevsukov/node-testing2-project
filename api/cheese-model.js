@@ -4,6 +4,7 @@ module.exports = {
   insert,
   getAll,
   getById,
+  remove
 }
 
 function getAll() {
@@ -19,4 +20,8 @@ async function insert(cheese) {
     .then(([id]) => {
       return getById(id)
     })
+}
+
+async function remove(id){
+    return db('cheese').delete().where('id', id)
 }

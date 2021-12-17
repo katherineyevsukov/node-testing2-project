@@ -30,4 +30,8 @@ server.get("/", (req, res) => {
     .json(await Cheese.insert(req.body))
   });
 
+  server.delete("/cheese/:id", async (req, res) => {
+      res.status(200).json(await Cheese.remove(req.params.id))
+  })
+
   module.exports = server;

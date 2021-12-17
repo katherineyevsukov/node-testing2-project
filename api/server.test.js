@@ -40,3 +40,11 @@ describe('[GET] /cheese', () => {
       expect(res.status).toBe(201)
     })
   })
+
+  describe('[DELETE] /cheese/:id', () => {
+    test('deletes cheese from db', async () => {
+      await request(server).delete('/cheese/1')
+      const res2 = await request(server).get('/cheese')
+      expect(res2.body).toHaveLength(4)
+    })
+  })
